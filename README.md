@@ -1,8 +1,9 @@
-# EventMakers - Event Management Web Application
+# EventMakers - Event Management Web Application 
+<img width="1898" height="993" alt="image" src="https://github.com/user-attachments/assets/8b4396c9-17f6-401a-95f5-28dfa028deb5" />
+Demo:
+https://prasanarath.github.io/EventMakers
 
-
-## Overview![Up
-
+## Overview
 **EventMakers** is a web-based platform designed to **simplify event planning and management**. It helps users plan, organize, and execute events efficiently by providing tools for event visualization, vendor coordination, and step-by-step guidance. Whether for corporate events, weddings, or parties, EventMakers ensures a seamless experience for organizers and attendees.
 
 **Key Use Cases:**
