@@ -1,0 +1,16 @@
+[
+  {
+    "eventType": "dadfa",
+    "location": "gajuewk",
+    "guests": "222",
+    "food": "veg",
+    "include": {
+      "starters": true,
+      "desserts": false,
+      "beverages": false
+    },
+    "duration": "10",
+    "decorations": "",
+    "queries": ""
+  }
+]

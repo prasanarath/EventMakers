@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "a123"
+    },
+    {
+      "username": "user1",
+      "password": "password1"
+    },
+    {
+      "username": "newuser",
+      "email": "newuser@example.com",
+      "password": "password123"
+    },
+    {
+      "name": "teja",
+      "email": "teja@gmail.com",
+      "username": "teja@123",
+      "password": "112"
+    },
+    {
+      "name": "adsd",
+      "email": "aslfk@gmail.com",
+      "username": "teja@1",
+      "password": "11"
+    },
+    {
+      "name": "rk14",
+      "email": "rk14@gmail.com",
+      "username": "rk14",
+      "password": "345"
+    },
+    {
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "username": "iamo",
+      "password": "112"
+    },
+    {
+      "name": "rahul",
+      "email": "rahul@gmail.com",
+      "username": "rahul@123",
+      "password": "123"
+    },
+    {
+      "name": "prasana",
+      "email": "prasaba!@gmail.com",
+      "username": "prasana",
+      "password": "123"
+    },
+    {
+      "name": "Teja Senapathi",
+      "email": "TejaSenapathi704@gmail.com",
+      "username": "Teja7",
+      "password": "5252"
+    }
+  ]
+}

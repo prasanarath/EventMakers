@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Makers </title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Diamond-shaped Logo */
+        header img.logo {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            left: 20px;
+            top: 35px;
+            object-fit: cover;
+            transform:rotate(50deg) ; /* Makes the image circular */
+        }
+
+        header h1 {
+            font-size: 42px; /* Increased heading size */
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Smooth and slightly slower transition */
+        }
+        
+        .gallery-img {
+            width: 100%; /* Each image takes full width */
+            flex-shrink: 30; /* Prevents images from shrinking */
+            margin-right: 10px; /* Space between images */
+            object-fit: cover;
+        }
+        /* Buttons for navigation */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev.disabled, .next.disabled {
+            display: none;
+        }
+
+        /* "What We Do" Section Styles */
+        .what-we-do {
+            background-color: #ecf0f1;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .what-we-do h2 {
+            font-size: 32px; /* Slightly bigger heading */
+            margin-bottom: 20px;
+        }
+        .what-we-do p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* Our Partners Section Styles */
+        .partners {
+            background-color: #dbdfdf;
+            padding: 60px 20px;
+        }
+        .partners h2 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .partner-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .partner-item {
+            width: 200px;
+            margin-bottom: 30px;
+        }
+        .partner-item img {
+            width: 100px;
+            margin-bottom: 15px;
+        }
+        .partner-item p {
+            font-size: 18px;
+        }
+
+        /* Contact Us Section Styles */
+        #contact {
+            background-color: #17866ffe; /* Updated background */
+            color: white; /* Updated font color */
+            padding: 60px 20px;
+        }
+        #contact h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #486480;
+            padding: 50px;
+            border-radius: 8px;
+        }
+        #contact label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #contact button {
+            background-color: #16a085;
+            color: white;
+            font-size: 18px;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #contact button:hover {
+            background-color: #1abc9c;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Plan an Event Section Styling */
+        .plan-event {
+            background-color: #ecf0f1;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .plan-event h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .plan-event p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .plan-event a {
+            font-size: 18px;
+            color: #1abc9c;
+            text-decoration: none;
+        }
+
+        .plan-event a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        .logout-btn{
+            width: 50px;
+            border: 0px;
+            border-width: 50px;
+            background-color: aqua;
+
+        }
+
+    .btn{
+        width: 130px;
+        height: 40px;
+            border: 0px;
+            background-color: rgb(0, 153, 255);
+            border-radius: 30px;
+            margin-top: 20px; 
+            
+    }
+
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- Header Section -->
+    <header>
+        <img src="images/logo.png" alt="Company Logo" class="logo">
+        <h1>Welcome, We are Event Makers </h1>
+        <p>Your One-Stop Solution for Unforgettable Events</p>
+        <!-- Login/Signup Button -->
+        <div class="auth-buttons" id="login-signup">
+            <a href="login.html" class="auth-button">Login</a>
+            <a href="signup.html" class="auth-button">Sign Up</a>
+        </div>
+        <div><a href="gallery.html"><button class="btn">Event Gallery</button></a></div>
+        <div id="logout-container">
+            <button id="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#top">Home</a></li> <!-- Updated this link -->
+            <li><a href="#gallery">Our Events</a></li>
+            <li><a href="#whatwedo">What We Do</a></li>
+            <li><a href="#planEvent">Plan an Event</a></li>
+            <li><a href="#partners">Our Partners</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="joinus.html">Join us</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Gallery Section -->
+    <div class="container" id="gallery">
+        <h2 style="text-align:center; font-size:28px; margin-bottom:40px;">Previous Events</h2>
+        <div class="gallery-container">
+            <div class="gallery">
+                <img src="images/event1.jpg" alt="Event 1" class="gallery-img">
+                <img src="images/event2.jpg" alt="Event 2" class="gallery-img">
+                <img src="images/event3.jpg" alt="Event 3" class="gallery-img">
+                <img src="images/event4.jpg" alt="Event 4" class="gallery-img">
+                <img src="images/event5.jpg" alt="Event 5" class="gallery-img">
+                <img src="images/event6.jpg" alt="Event 6" class="gallery-img">
+                
+        
+            
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- "What We Do" Section -->
+    <div class="what-we-do" id="whatwedo">
+        <h2>What We Do</h2>
+        <p>
+            At EventMakers we specialize in curating exceptional events that cater to all your needs. From small intimate gatherings to large-scale corporate events, we ensure that every detail is taken care of. Our dedicated team works with top-tier vendors and suppliers to bring your event vision to life. Whether you need event planning, decorations, catering, or entertainment, we are here to make your event unforgettable.
+        </p>
+    </div>
+    <!-- "Plan an Event" Section -->
+    <div class="plan-an-event" id="planEvent">
+        <h2>Plan an Event</h2>
+        <p>
+            At EventMakers, we specialize in helping you plan and execute events that exceed your expectations. Whether you're organizing a corporate conference, a wedding, or a birthday party, our team is here to guide you every step of the way. We offer a wide range of services, including:
+        </p>
+        <ul>
+            <li>Event Consultation</li>
+            <li>Venue Selection</li>
+            <li>Decoration and Theme Creation</li>
+            <li>Catering and Entertainment</li>
+            <li>Event Coordination and Management</li>
+        </ul>
+        <p>We are dedicated to making your event a success, and we promise it will be an unforgettable experience.</p>
+        <p>
+            <a href="#" id="make-event-memorable">Make Your Event Memorable</a>
+        </p>
+    </div>
+
+    <!-- Our Partners Section -->
+    <div class="partners" id="partners">
+        <h2>Our Partners</h2>
+        <div class="partner-list">
+            <div class="partner-item">
+                <a href="https://ramalights.com/?srsltid=AfmBOoqPa7iHc0q9RnOAGjVxovVIFHRA_uEkykDZYPBdIabSNjY5j30f" target="_blank" rel="noopener noreferrer">
+
+                <img src="images/partner1.jpg" alt="Partner 1">
+            </a>
+                <p>Rama lights</p>
+            </div>
+            <div class="partner-item">
+                <img src="images/partner2.jpg" alt="Partner 2">
+                <p>Riya catering</p>
+            </div>
+            <div class="partner-item">
+                <img src="images/partner3.jpg" alt="Partner 3">
+                <p>Twin valley</p>
+            </div>
+            <div class="partner-item">
+                <img src="images/partner4.jpg" alt="Partner 4" >
+                <p>Rishab lights</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <footer id="contact">
+        <h2>Contact Us</h2>
+        <form action="mailto:info@abcevents.com" method="POST" enctype="multipart/form-data">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <p>&copy; 2023 ABC Event Management</p>
+        <p>Contact us at <a href="mailto:info@abcevents.com" style="color: #1abc9c;">info@abcevents.com</a> or call (123) 456-7890</p>
+        <p>Follow us on:
+            <a href="#" style="color: #1abc9c;">Facebook</a> | 
+            <a href="#" style="color: #1abc9c;">Instagram</a> | 
+            <a href="#" style="color: #1abc9c;">Twitter</a>
+        </p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const gallery = document.querySelector('.gallery');
+        const images = document.querySelectorAll('.gallery-img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const totalImages = images.length;
+        const imageWidth = gallery.clientWidth; // Image width based on container width
+        
+        // Function to update the gallery position
+        function updateGalleryPosition() {
+            gallery.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+            checkButtons();
+        }
+        
+        // Enable/disable navigation buttons
+        function checkButtons() {
+            prevButton.classList.toggle('disabled', currentIndex === 0);
+            nextButton.classList.toggle('disabled', currentIndex === images.length - 1);
+        }
+        
+        // Previous button functionality
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateGalleryPosition();
+            }
+        });
+        
+        // Next button functionality
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < totalImages - 1) {
+                currentIndex++;
+                updateGalleryPosition();
+            }
+        });
+        
+        // Automatic image transition every 3 seconds
+        setInterval(() => {
+            if (currentIndex < totalImages - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to the first image
+            }
+            updateGalleryPosition();
+        }, 2000); // Move images every 3 seconds
+        
+        // Handle window resize to update image width dynamically
+        window.addEventListener('resize', () => {
+            imageWidth = gallery.clientWidth;
+            updateGalleryPosition(); // Recalculate position on resize
+        });
+        
+
+
+const homeLink = document.querySelector('a[href="#top"]');
+
+homeLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent the default anchor link behavior
+    
+    window.scrollTo({
+        top: 0, // Scroll to the top of the page
+        behavior: 'smooth' // Use smooth scrolling
+    });
+});
+
+
+
+const username = localStorage.getItem('username');
+  const loginContainer = document.getElementById('login-signup');
+
+  if (username) {
+    // If logged in, show the username instead of login/signup buttons
+    loginContainer.innerHTML = `<span>Welcome, ${username}</span>`;
+  } else {
+    // If not logged in, show login/signup buttons
+    loginContainer.innerHTML = `
+      <a href="login.html" class="auth-button">Login</a>
+      <a href="signup.html" class="auth-button">Sign Up</a>
+    `;
+  }
+     // Function to check session and update UI
+    function checkSession() {
+        fetch('/check-session')
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    // If logged in, show the username and hide login/signup
+                    document.getElementById('login-signup').innerHTML = `<span>Welcome, ${data.username}</span>`;
+                    document.getElementById('logout-container').style.display = 'block';
+                } else {
+                    // If not logged in, show login/signup buttons
+                    document.getElementById('login-signup').innerHTML = `
+                        <a href="login.html" class="auth-button">Login</a>
+                        <a href="signup.html" class="auth-button">Sign Up</a>
+                    `;
+                    document.getElementById('logout-container').style.display = 'none';
+                }
+            })
+            .catch(err => console.error('Error:', err));
+    }
+
+    // Call checkSession when the page loads
+    window.onload = checkSession;
+
+    // Logout function
+    function logout() {
+        fetch('/logout', {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Logged out successfully') {
+                // Logout successful, reload the page to show login/signup options
+                localStorage.removeItem('username');
+                window.location.href = '/'; // Redirect to the homepage or reload
+            }
+        })
+        .catch(err => console.error('Error:', err));
+    }
+
+    const makeEventMemorableLink = document.getElementById('make-event-memorable');
+    
+    makeEventMemorableLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default anchor link behavior
+        
+        if (username) {
+            // If logged in, redirect to the 'selection' page
+            window.location.href = 'selection.html';
+        } else {
+            // If not logged in, redirect to the login page
+            window.location.href = 'login.html';
+        }
+    });
+    </script>
+
+</body>
+</html>

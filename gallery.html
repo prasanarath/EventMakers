@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Login</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('backimg.png');
+
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+label {
+    font-size: 14px;
+    margin: 8px 0;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+</style>    
+</head>
+<body>
+    <header>
+        <h1>Gallery</h1>
+    </header>
+
+    <div class="form-container">
+        <form id="gallery-form">
+            <label for="event-date">Event Date:</label>
+            <input type="date" id="event-date" name="event-date" required>
+
+            <label for="user-id">Event Id:</label>
+            <input type="text" id="user-id" name="user-id" required>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="password">password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="validateForm()">Generate</button>
+        </form>
+    </div>
+    <script>
+        // Function to validate the form and redirect based on inputs
+function validateForm() {
+    const id = document.getElementById('user-id').value;
+    const name = document.getElementById('name').value;
+    const password = document.getElementById('password').value;
+
+    // Valid ID and corresponding password (reversed ID)
+    const validIds = {
+        "1234": "4321",
+        "5678": "8765",
+        "3456": "6543",
+        "6789": "9876"
+    };
+
+    // Check if the entered ID is valid and password matches the reversed ID
+    if (validIds[id] && validIds[id] === password) {
+        // Redirect based on name
+        switch (name.toLowerCase()) {
+            case "ram charan":
+                window.location.href = "page3.html";
+                break;
+            case "allu arjun":
+                window.location.href = "page1.html";
+                break;
+            case "prabhas":
+                window.location.href = "page2.html";
+                break;
+            default:
+                alert("Name not recognized. Please enter a valid name.");
+                return false;
+        }
+    } else {
+        alert("Invalid ID or password. Please try again.");
+        return false;
+    }
+}
+
+    </script>
+</body>
+</html>

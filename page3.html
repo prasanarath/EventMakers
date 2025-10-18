@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Photos</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The photos of you in the event are:</h1>
+    </header>
+
+    <section class="photo-gallery">
+        <div class="photo">
+            <img src="ram1.jpg" alt="Event Photo 1">
+        </div>
+        <div class="photo">
+            <img src="ram2.jpg" alt="Event Photo 2">
+        </div>
+        <div class="photo">
+            <img src="ram3.jpg" alt="Event Photo 3">
+        </div>
+        <div class="photo">
+            <img src="ram4.jpg" alt="Event Photo 4">
+        </div>
+        <div class="photo">
+            <img src="ram6.jpg" alt="Event Photo 5">
+        </div>
+        <div class="photo">
+            <img src="ram7.jpg" alt="Event Photo 6">
+        </div>
+        <div class="photo">
+            <img src="ram8.jpg" alt="Event Photo 7">
+        </div>
+        <div class="photo">
+            <img src="ram9.jpg" alt="Event Photo 8">
+        </div>
+        
+        <!-- Add more photos here if needed -->
+    </section>
+</body>
+</html>
